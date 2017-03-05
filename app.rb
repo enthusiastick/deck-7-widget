@@ -37,3 +37,8 @@ get("/oauth2callback") do
     redirect to("/")
   end
 end
+
+get("/reset") do
+  session.clear
+  redirect to("/")
+end
