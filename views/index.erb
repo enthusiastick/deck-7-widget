@@ -1,0 +1,5 @@
+<h1>Welcome to Launch Academy</h1>
+<h2>Deck 7</h2>
+<% @items.each do |item| %>
+  <p><%= item.start.date_time.strftime("%l:%M%P") %> &ndash; <%= item.end.date_time.strftime("%l:%M%P") %> <%= item.summary %></p>
+<% end %>
