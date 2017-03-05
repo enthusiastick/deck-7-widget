@@ -17,6 +17,7 @@ get "/" do
   client_opts = JSON.parse(session[:credentials])
   auth_client = Signet::OAuth2::Client.new(client_opts)
   @items = GoogleCalendar.fetch_events(auth_client)
+  @today = Time.now.strftime('%A, %B %-d, %Y')
   erb :index
 end
 
