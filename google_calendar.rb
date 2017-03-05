@@ -24,7 +24,7 @@ class GoogleCalendar
       options: { authorization: auth_client },
       single_events: true,
       order_by: "startTime",
-      time_min: now.iso8601,
+      time_min: Time.new(now.year, now.month, now.day, 00, 00, 00).iso8601,
       time_max: Time.new(now.year, now.month, now.day, 23, 59, 59).iso8601)
 
     response.items
