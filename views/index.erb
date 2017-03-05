@@ -1,5 +1,15 @@
-<h1>Welcome to Launch Academy</h1>
-<h2>Deck 7</h2>
+<div class="header">
+  <h1 class="text-center">Welcome to Launch Academy</h1>
+  <h2 class="text-center">Deck 7</h2>
+  <hr />
+</div>
 <% @items.each do |item| %>
-  <p><%= item.start.date_time.strftime("%l:%M%P") %> &ndash; <%= item.end.date_time.strftime("%l:%M%P") %> <%= item.summary %></p>
+  <div class="row">
+    <div class="small-6 columns">
+      <h3 class="text-right"><%= item.start.date_time.strftime("%l:%M%P") %> &ndash; <%= item.end.date_time.strftime("%l:%M%P") %></h3>
+    </div>
+    <div class="small-6 columns">
+      <h3><strong><%= item.summary %></strong></h3>
+    </div>
+  </div>
 <% end %>

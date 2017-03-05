@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=ABeeZee');
+
+body {
+  background-color: #e5f3f4;
+}
+
+h1, h2, h3 {
+  font-family: 'ABeeZee', sans-serif;
+}
+
+
+h1, h2 {
+  color: #f8f8f9;
+}
+
+h3 {
+  color: #777777;
+  line-height: 2em;
+}
+
+h3 strong {
+  color: #ed1a7b;
+}
+
+.header {
+  background-color: #37becc;
+  padding-top: 3em;
+}
