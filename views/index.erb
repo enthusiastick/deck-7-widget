@@ -5,10 +5,10 @@
 </div>
 <% @items.each do |item| %>
   <div class="row">
-    <div class="small-4 columns">
+    <div class="small-6 medium-5 large-4 columns">
       <h3 class="text-right"><%= item.start.date_time.strftime("%l:%M%P") %> &ndash; <%= item.end.date_time.strftime("%l:%M%P") %></h3>
     </div>
-    <div class="small-8 columns">
+    <div class="small-6 medium-7 large-8 columns">
       <h3><strong><%= item.summary %></strong></h3>
     </div>
   </div>
