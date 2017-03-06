@@ -8,7 +8,7 @@ require_relative "google_calendar"
 
 Dotenv.load
 enable :sessions
-set :session_secret, "setme"
+set :session_secret, ENV["SECRET_KEY_BASE"]
 
 get "/" do
   unless session.has_key?(:credentials)
