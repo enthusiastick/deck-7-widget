@@ -11,9 +11,7 @@ enable :sessions
 set :session_secret, ENV["SECRET_KEY_BASE"]
 
 get "/" do
-  unless session.has_key?(:credentials)
-    redirect to("/oauth2callback")
-  end
+  redirect to("/oauth2callback") unless session.has_key?(:credentials)
   begin
     client_opts = JSON.parse(session[:credentials])
     auth_client = Signet::OAuth2::Client.new(client_opts)
