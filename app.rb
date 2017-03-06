@@ -14,11 +14,15 @@ get "/" do
   unless session.has_key?(:credentials)
     redirect to("/oauth2callback")
   end
-  client_opts = JSON.parse(session[:credentials])
-  auth_client = Signet::OAuth2::Client.new(client_opts)
-  @items = GoogleCalendar.fetch_events(auth_client)
-  @today = Time.now.strftime('%A, %B %-d, %Y')
-  erb :index
+  begin
+    client_opts = JSON.parse(session[:credentials])
+    auth_client = Signet::OAuth2::Client.new(client_opts)
+    @items = GoogleCalendar.fetch_events(auth_client)
+    @today = Time.now.strftime('%A, %B %-d, %Y')
+    erb :index
+  rescue
+    redirect to("/reset")
+  end
 end
 
 get("/oauth2callback") do
