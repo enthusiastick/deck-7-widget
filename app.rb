@@ -3,6 +3,7 @@ require "google/apis/calendar_v3"
 require "google/api_client/client_secrets"
 require "json"
 require "sinatra"
+require "tzinfo"
 
 require_relative "google_calendar"
 require_relative "now"

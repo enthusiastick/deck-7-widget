@@ -1,5 +1,3 @@
-require "TZInfo"
-
 class Now
   def self.eastern
     timezone_name = "US/Eastern"
