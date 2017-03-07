@@ -18,7 +18,7 @@ class GoogleCalendar
     service.client_options.application_name = "Deck 7 Widget"
 
     calendar_id = ENV["GOOGLE_CALENDAR_ID"]
-    now = Time.now
+    now = Now.eastern
     response = service.list_events(
       calendar_id,
       options: { authorization: auth_client },
