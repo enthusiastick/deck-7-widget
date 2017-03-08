@@ -16,9 +16,7 @@ class Today
   end
 
   def self.offset_in_hours
-    timezone_name = "US/Eastern"
-
-    timezone = TZInfo::Timezone.get(timezone_name)
+    timezone = TZInfo::Timezone.get(ENV["TIMEZONE_STRING"])
     timezone.current_period.utc_total_offset_rational.numerator
   end
 end
