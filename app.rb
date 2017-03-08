@@ -6,7 +6,7 @@ require "sinatra"
 require "tzinfo"
 
 require_relative "google_calendar"
-require_relative "now"
+require_relative "today"
 
 Dotenv.load
 enable :sessions
@@ -18,7 +18,7 @@ get "/" do
     client_opts = JSON.parse(session[:credentials])
     auth_client = Signet::OAuth2::Client.new(client_opts)
     @items = GoogleCalendar.fetch_events(auth_client)
-    @today = Now.eastern.strftime('%A, %B %-d, %Y')
+    @today = Today.now.strftime('%A, %B %-d, %Y')
     erb :index
   rescue
     redirect to("/reset")

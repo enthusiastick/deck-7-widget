@@ -18,14 +18,13 @@ class GoogleCalendar
     service.client_options.application_name = "Deck 7 Widget"
 
     calendar_id = ENV["GOOGLE_CALENDAR_ID"]
-    now = Now.eastern
     response = service.list_events(
       calendar_id,
       options: { authorization: auth_client },
       single_events: true,
       order_by: "startTime",
-      time_min: Time.new(now.year, now.month, now.day, 00, 00, 00).iso8601,
-      time_max: Time.new(now.year, now.month, now.day, 23, 59, 59).iso8601)
+      time_min: Today.at_beginning_of_day.iso8601,
+      time_max: Today.at_end_of_day.iso8601)
 
     response.items
   end
