@@ -7,6 +7,10 @@ class Today
     Time.new(now.year, now.month, now.day + 1, -offset_in_hours).getlocal(offset)
   end
 
+  def self.day
+    now.to_date.day
+  end
+
   def self.now
     Time.now.getlocal(offset)
   end

@@ -26,6 +26,10 @@ class GoogleCalendar
       time_min: Today.at_beginning_of_day.iso8601,
       time_max: Today.at_end_of_day.iso8601)
 
-    response.items
+    result = Array.new
+    response.items.each do |item|
+      result << item if item.start.date_time.to_date.day == Today.day
+    end
+    result
   end
 end
