@@ -28,7 +28,9 @@ class GoogleCalendar
 
     result = Array.new
     response.items.each do |item|
-      result << item if item.start.date_time.to_date.day == Today.day
+      unless item.start.date_time.nil?
+        result << item if item.start.date_time.to_date.day == Today.day
+      end
     end
     result
   end
