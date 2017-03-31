@@ -14,6 +14,7 @@ class GoogleCalendar
   end
 
   def self.fetch_events(auth_client)
+    Time.zone = ENV["TIMEZONE_STRING"]
     service = Google::Apis::CalendarV3::CalendarService.new
     service.client_options.application_name = "Deck 7 Widget"
 
@@ -23,13 +24,13 @@ class GoogleCalendar
       options: { authorization: auth_client },
       single_events: true,
       order_by: "startTime",
-      time_min: Today.at_beginning_of_day.iso8601,
-      time_max: Today.at_end_of_day.iso8601)
+      time_min: Time.zone.now.at_beginning_of_day.iso8601,
+      time_max: Time.zone.now.at_end_of_day.iso8601)
 
     result = Array.new
     response.items.each do |item|
       unless item.start.date_time.nil?
-        result << item if item.start.date_time.to_date.day == Today.day
+        result << item if item.start.date_time.to_date.day == Time.zone.now.day
       end
     end
     result
