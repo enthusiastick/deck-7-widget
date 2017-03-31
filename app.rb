@@ -1,11 +1,10 @@
-require "active_support/time_with_zone"
 require "active_support/time"
+require "active_support/time_with_zone"
 require "dotenv"
 require "google/apis/calendar_v3"
 require "google/api_client/client_secrets"
 require "json"
 require "sinatra"
-require "tzinfo"
 
 require_relative "google_calendar"
 

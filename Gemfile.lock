@@ -79,7 +79,6 @@ DEPENDENCIES
   dotenv
   google-api-client
   sinatra
-  tzinfo
 
 RUBY VERSION
    ruby 2.3.2p217
