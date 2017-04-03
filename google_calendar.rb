@@ -29,10 +29,14 @@ class GoogleCalendar
 
     result = Array.new
     response.items.each do |item|
-      unless item.start.date_time.nil?
-        result << item if item.start.date_time.to_date.day == Time.zone.now.day
-      end
+      result << item if relevant(item)
     end
     result
+  end
+
+  def self.relevant(event)
+    !event.start.date_time.nil? &&
+    event.end.date_time >= (event.start.date_time + 1.hour) &&
+    event.start.date_time.to_date.day == Time.zone.now.day
   end
 end
