@@ -36,7 +36,7 @@ class GoogleCalendar
 
   def self.relevant(event)
     !event.start.date_time.nil? &&
-    event.end.date_time >= (event.start.date_time + 1.hour) &&
-    event.start.date_time.to_date.day == Time.zone.now.day
+    event.start.date_time.to_date.day == Time.zone.now.day &&
+    !event.summary.downcase.include?("mock")
   end
 end
